@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FragTests</string>
+    <string name="hello_world">Hello world, I am Fragment #1!</string>
+    <string name="action_settings">Settings</string>
+</resources>
