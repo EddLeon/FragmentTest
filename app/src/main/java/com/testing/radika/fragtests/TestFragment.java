@@ -13,6 +13,7 @@ import android.view.ViewGroup;
  */
 public class TestFragment extends Fragment {
     View rootView;
+
     public TestFragment() {
         Log.d("TestFrag","si me cree");
     }
@@ -27,6 +28,8 @@ public class TestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("TestFrag","si existo");
+
+        //Keeping reference to view
         rootView = inflater.inflate(R.layout.fragment_test, container, false);
         //return super.onCreateView(inflater, container, savedInstanceState);
         return rootView;

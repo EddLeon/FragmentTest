@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.container,testFragment);
         fragmentTransaction.commit();*/
 
+        //Compact way
         FragmentTransaction fragTran = getFragmentManager().beginTransaction().add(R.id.container,testFragment);
         fragTran.commit();
     }
