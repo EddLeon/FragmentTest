@@ -2,20 +2,19 @@ package com.testing.radika.fragtests;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TestFragment.OnArticleSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        TestFragment testFragment = new TestFragment();
 
         /*FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -23,11 +22,18 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.container,testFragment);
         fragmentTransaction.commit();*/
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        TestFragment testFragment = new TestFragment();
+
         //Compact way
         FragmentTransaction fragTran = getFragmentManager().beginTransaction().add(R.id.container,testFragment);
         fragTran.commit();
+        super.onStart();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,4 +56,21 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * Callback from TestFragment via implemented method
+     * @param id
+     */
+    @Override
+    public void onArticleSelected(int id) {
+        Toast.makeText(this, Integer.toString(id), Toast.LENGTH_SHORT).show();
+    }
+
+   /* TestFragment.OnArticleSelectedListener tFragListener = new TestFragment.OnArticleSelectedListener() {
+        @Override
+        public void onArticleSelected(int id) {
+            Toast.makeText(context, id, Toast.LENGTH_SHORT).show();
+        }
+    };*/
+
 }
