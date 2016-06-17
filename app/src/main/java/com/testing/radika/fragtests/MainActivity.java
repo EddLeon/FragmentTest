@@ -1,5 +1,6 @@
 package com.testing.radika.fragtests;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -10,6 +11,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements TestFragment.OnArticleSelectedListener{
+
+    MainActivityFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +30,18 @@ public class MainActivity extends AppCompatActivity implements TestFragment.OnAr
 
     @Override
     protected void onStart() {
+
+        //calling fixed (in xml) framents method
+        fragment = (MainActivityFragment) getFragmentManager().findFragmentById(R.id.fragment);
+        fragment.fromActivity(2);
+
         TestFragment testFragment = new TestFragment();
 
         //Compact way
-        FragmentTransaction fragTran = getFragmentManager().beginTransaction().add(R.id.container,testFragment);
+        FragmentTransaction fragTran = getFragmentManager().beginTransaction().add(R.id.container, testFragment);
         fragTran.commit();
         super.onStart();
+
     }
 
     @Override

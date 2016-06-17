@@ -71,4 +71,8 @@ public class TestFragment extends Fragment {
         public void onArticleSelected(int id);
     }
 
+    public void fromActivity(int id){
+        Log.e("Frag"," received from main : "+Integer.toString(id));
+    }
+
 }
